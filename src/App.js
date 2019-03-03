@@ -3,42 +3,14 @@ import './App.css';
 import {Header} from "./components/Header";
 import {Player} from "./components/Player";
 
-class Counter extends React.Component {
-  state = {
-    score: 0
-  };
-
-  incrementScore = () => {
-    console.log(this);
-    this.setState(prevState => {
-      return {score: prevState.score + 1}
-    });
-  }
-
-  decrementScore = () => {
-    this.setState(prevState => {
-      return {score: prevState.score - 1}
-    });
-  }
-
-  render() {
-    return (
-      <div className="counter">
-        <button className="counter-action decrement" onClick={this.decrementScore}> - </button>
-        <span className="counter-score">{this.state.score}</span>
-        <button className="counter-action increment" onClick={this.incrementScore}> + </button>
-      </div>
-    );
-  }
-}
 
 class App extends React.Component {
   state = {
     players: [
-      {name: 'LDK', id: 1},
-      {name: 'HONG', id: 2},
-      {name: 'KIM', id: 3},
-      {name: 'PARK', id: 4},
+      {name: 'LDK', score:0, id: 1},
+      {name: 'HONG', score:0, id: 2},
+      {name: 'KIM', score:0, id: 3},
+      {name: 'PARK', score:0, id: 4},
     ]
   };
   handleRemovePlayer = (id) => {
@@ -48,15 +20,31 @@ class App extends React.Component {
       }
     })
   }
+
+  //증가 혹은 감소하는 핸들러 메서드
+  handleChangeScore = (id, delta) =>{
+    console.log(id, delta);
+    this.setState(prevState => ({
+      players: prevState.players.map(item => {
+        if(item.id === id){
+          item.score = item.score + delta;
+        }
+        return item;
+      })
+    }));
+  }
+
   render() {
     return (
       <div className="scoreboard">
         <Header title="My scoreboard" totalPlayers={this.state.players.length} />
 
         {/*Players List*/}
-        { this.state.players.map(item => <Player name={item.name}
-                                                 key={item.id.toString()} removePlayer={this.handleRemovePlayer}
-                                                 id={item.id} />)
+        { this.state.players.map(item =>
+          <Player name={item.name}
+                   key={item.id.toString()} removePlayer={this.handleRemovePlayer}
+                    score={item.score} id={item.id}
+                    changeSocre={this.handleChangeScore}/>)
         }
       </div>
     );

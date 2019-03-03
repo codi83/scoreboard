@@ -1,4 +1,5 @@
 import React from "react";
+import {Counter} from "./Counter";
 
 export const Player = (props) => {
   return (
@@ -9,7 +10,9 @@ export const Player = (props) => {
       <span className="player-name">
         {props.name}
       </span>
-      <Counter />
+      <Counter score={props.score}
+               id={props.id}
+               changeScore={props.changeSocre}/>
     </div>
   );
 };
