@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Header} from "./components/Header";
+import {Player} from "./components/Player";
 
 class Counter extends React.Component {
   state = {
@@ -29,21 +30,6 @@ class Counter extends React.Component {
       </div>
     );
   }
-}
-
-const Player = (props) => {
-  console.log(props);
-  return (
-    <div className="player">
-      <span className="player-name">
-        <button className="remove-player" onClick={() => props.removePlayer(props.id)}>x</button>
-      </span>
-      <span className="player-name">
-        {props.name}
-      </span>
-      <Counter />
-    </div>
-  );
 }
 
 class App extends React.Component {
