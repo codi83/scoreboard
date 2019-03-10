@@ -26,9 +26,12 @@ export class Stopwatch extends React.Component{
   render()
   {
     return (
+      /*<div className="stopwatch">
+        <h2>Stopwatch</h2>
+        <span className="stopwatch-time">{this.state.timer}</span>*/
       <div className="stopwatch">
         <h2>Stopwatch</h2>
-        <sapn className="stopwatch-time">{this.state.timer}</sapn>
+        <span className="stopwatch-time">{this.state.timer}</span>
         <button onClick={this.handleStopwatch}>{this.state.isRunning ? 'Stop' : 'Start'}</button>
         <button onClick={this.handleReset}>Reset</button>
       </div>
