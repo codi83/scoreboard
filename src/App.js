@@ -1,29 +1,23 @@
 import React from 'react';
 import './App.css';
-import {Header} from "./components/Header";
+import Header from "./components/Header";
 import {Player} from "./components/Player";
-import {AddPlayerForm} from "./components/AddPlayerForm";
+import AddPlayerForm from "./components/AddPlayerForm";
+import {connect} from "react-redux";
 
 
 class App extends React.Component {
-  state = {
-    players: [
-      {name: 'LDK', score:0, id: 1},
-      {name: 'HONG', score:0, id: 2},
-      {name: 'KIM', score:0, id: 3},
-      {name: 'PARK', score:0, id: 4},
-    ]
-  };
-  handleRemovePlayer = (id) => {
+
+/*  handleRemovePlayer = (id) => {
     this.setState(prevState => {
       return {
         players: prevState.players.filter(item => item.id !== id)
       }
     })
-  }
+  }*/
 
   //증가 혹은 감소하는 핸들러 메서드
-  handleChangeScore = (id, delta) =>{
+/*  handleChangeScore = (id, delta) =>{
     console.log(id, delta);
     this.setState(prevState => ({
       players: prevState.players.map(item => {
@@ -33,35 +27,35 @@ class App extends React.Component {
         return item;
       })
     }));
-  }
+  }*/
 
   //플레이어 추가하는 메서드
-  handleAddPlayer = (name) =>{
+/*  handleAddPlayer = (name) =>{
     console.log(name);
     //player id 최대값 찾기
     let maxId = 0;
-    //this.state.players.forEach(item => item.id > maxId ? maxId = item.id : '');
-    this.state.players.forEach(item => {
+    //this.props.players.forEach(item => item.id > maxId ? maxId = item.id : '');
+    this.props.players.forEach(item => {
       maxId = item.id;
     });
 
     //추가
     this.setState({
       players: [
-        ...this.state.players,
+        ...this.props.players,
         //{id: maxId + 1, name: name, score:0}
         {id: maxId + 1, name, score:0}  //키와 value가 같으면 하나만 써도 됨.
       ]
       })
-    }
+    }*/
 
   render() {
     return (
       <div className="scoreboard">
-        <Header title="My scoreboard" players={this.state.players} />
+        <Header title="My scoreboard" players={this.props.players} />
 
         {/*Players List*/}
-        { this.state.players.map(item =>
+        { this.props.players.map(item =>
           <Player name={item.name}
                    key={item.id.toString()} removePlayer={this.handleRemovePlayer}
                     score={item.score} id={item.id}
@@ -73,4 +67,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+let mapStateToProps = (state) => ({
+  players:state.playerReducer.players
+})
+
+export default connect(mapStateToProps)(App);

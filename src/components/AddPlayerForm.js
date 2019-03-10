@@ -1,15 +1,10 @@
 import React from 'react';
+import {addPlayer} from "../redux/actions";
+import {connect} from "react-redux";
 
 
-export class AddPlayerForm extends React.Component {
+class AddPlayerForm extends React.Component {
   textInput = React.createRef();
-
-  constructor(props) {
-    super(props);
-    /*this.state = {
-      playerName : ''
-    }*/
-  }
 
   /*handleValueChange = (e) => {
     this.setState({playerName: e.target.value})
@@ -35,3 +30,5 @@ export class AddPlayerForm extends React.Component {
     );
   }
 }
+
+export default connect(null, {addPlayer})(AddPlayerForm);
