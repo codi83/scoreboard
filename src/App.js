@@ -65,7 +65,7 @@ class App extends React.Component {
           <Player name={item.name}
                    key={item.id.toString()} removePlayer={this.handleRemovePlayer}
                     score={item.score} id={item.id}
-                    changeSocre={this.handleChangeScore}/>)
+                  changeScore={this.handleChangeScore}/>)
         }
         <AddPlayerForm addPlayer={this.handleAddPlayer}/>
       </div>
