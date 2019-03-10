@@ -30,7 +30,7 @@ export class Stopwatch extends React.Component{
         <h2>Stopwatch</h2>
         <sapn className="stopwatch-time">{this.state.timer}</sapn>
         <button onClick={this.handleStopwatch}>{this.state.isRunning ? 'Stop' : 'Start'}</button>
-        <button>Reset</button>
+        <button onClick={this.handleReset}>Reset</button>
       </div>
     );
   }
