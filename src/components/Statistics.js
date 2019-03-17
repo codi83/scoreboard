@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import styles from '../pages/scoreboard/Scoreboard.module.css'
 
 export const Statistics = (props) => {
   const totalPlayers = props.players.length;
@@ -8,7 +9,7 @@ export const Statistics = (props) => {
 
 
   return (
-    <table className="stats">
+    <table className={styles.stats}>
       <tbody>
       <tr>
         <td>Players:</td>
