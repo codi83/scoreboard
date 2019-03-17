@@ -1,4 +1,4 @@
-import {ADD_PLAYER, CHANGE_SCORE, UPDATE_TITLE} from "../actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER, UPDATE_TITLE} from "../actionTypes";
 
 const initialState = {
   title: 'Redux Score',
@@ -42,6 +42,11 @@ export const playerReducer = (state = initialState, action) =>{
         players: [
           ...state.players,
         ]
+      }
+    case REMOVE_PLAYER:
+      return{
+        ...state,
+        players: state.players.filter(item => item.id !== action.id)
       }
     default:
       return state;

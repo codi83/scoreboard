@@ -1,8 +1,10 @@
 import React from "react";
 import Counter from "./Counter";
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import {removePlayer} from "../redux/actions";
 
-export class Player extends React.Component{
+class Player extends React.Component{
 
   static propTypes = {
     id: PropTypes.number,
@@ -42,3 +44,5 @@ export class Player extends React.Component{
     return nextProps.score !== this.props.score;
   }
 };
+
+export default connect(null, {removePlayer})(Player)
