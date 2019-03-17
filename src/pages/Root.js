@@ -11,11 +11,13 @@ export class Root extends React.Component {
     return (
       <BrowserRouter>
         <Menu></Menu>
+        <div className="container" style={{backgroundColor: '#ffffff'}}>
         <Switch>
           <Route path="/" exact component={Home}></Route>
           <Route path="/heroes" component={Heroes}></Route>
           <Route path="/scoreboard" component={Scoreboard}></Route>
         </Switch>
+        </div>
       </BrowserRouter>
     );
   }

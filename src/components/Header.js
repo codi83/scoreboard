@@ -4,7 +4,7 @@ import {Stopwatch} from "./Stopwatch";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {updateTitle} from "../redux/actions";
-import styles from '../pages/scoreboard/Scoreboard.module.css'
+
 
 const Header = ({title, players}) => {
   return (
